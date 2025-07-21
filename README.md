@@ -25,8 +25,10 @@ client.economy = new Economy(client, {
             //inventory: "inventory" (Removed, use Inventory class instead)
         }
     },
+    //WARNING: NOTHING BUT THE ENMAP DATABASE HAS BEEN TESTED WORKING, USE AT OWN RISK.
     Mongoose: {
-        databaseURL: "mongodb://localhost:27017/economy",
+        databaseURL: "localhost:27017",
+        //if used "localhost:port" it will automatically open a database at "/economy"
         defaultValues: {
             coins: 0,
             bankCoins: 0,
@@ -100,7 +102,23 @@ console.log(user.data.coins);
 ```js
 client.economy.getUsersByGuild(guildId);
 ```
-## Inventory
+## User Object
+### getUser
+```js
+const user = await client.economy.getUser(userId, guildId);
+//This will return the user object with all the data
+```
+### set
+```js
+user.set(field, value);
+//this will set a certain field in the database(use parseInt() if value is a number)
+```
+### save
+```js
+await user.save();
+//This will save the user and the changes to the database
+```
+## User Inventory Object
 ### add
 ```js
 user.inventory.add(item, price, options);

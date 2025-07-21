@@ -9,7 +9,7 @@ class Economy {
         const [version, code] = pkg.version.split("-")
         if(code === "a"){
             process.emitWarning(
-                'This module is in **Alpha** state and is not yet ready for normal use.',
+                `This module is in **Alpha-${version}** state and is not yet ready for normal use.`,
                 {
                     code: '@jcauman23/economy',
                     type: 'Warning'
@@ -17,7 +17,7 @@ class Economy {
                 );
         }else if(code === "b"){
             process.emitWarning(
-                'This module is in beta and may be unstable;',
+                `This module is in beta-${version} and may be unstable;`,
                 {
                     code: '@jcauman23/economy',
                     type: 'Warning'
